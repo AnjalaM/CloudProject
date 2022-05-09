@@ -98,37 +98,27 @@ export default class AppliedJobs extends React.Component{
           items:[],
           isLoading:true
       }
+    this.getJobs()
     
-        Promise.all([ this.getJobs()])
-       
        console.log(this.state)
        console.log(this.unique_id)
     }
     async getJobs(){
-      await this.service.getJobs(this.props.user.attributes.email).then((data)=>
-      this.setState({
-        items:data,
+      await fetch("https://xrz0f1xcc1.execute-api.us-west-1.amazonaws.com/Production/jobs/"+this.props.user.attributes.email).
+      then((res)=>res.json())
+      .then((data)=>{ this.setState({
+        items:data!=undefined?data:[],
         isLoading:false
-      },()=>{console.log(this.state.items)}))
+      },()=>{console.log(this.state.isLoading)})})
+      
     }
-     _generateDocuments() {
-        const items=[];
-       Jobs.map((item)=>{
-          items.push({
-            companyName:item.companyName,
-            role:item.role,
-            location:item.location,
-            status:item.status,
-            lastmodifiedDate:new Date(item.modifiedDate).toDateString()
-          })})
-        
-        return items;
-      }
+ 
     render(){
         return <div>
             <h1>Hello!!!</h1>{
               this.state.isLoading?
-              <h1>Data is loading.......</h1>
+             <div> <h1>Data is loading.......</h1>
+             </div>
               :
             <DetailsList
             items={this.state.items}

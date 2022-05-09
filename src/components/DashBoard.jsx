@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { IStyleSet, Label, ILabelStyles, Pivot, PivotItem } from '@fluentui/react';
 import AppliedJobs from './AppliedJobs';
+import AddJob from './AddJob';
 
 export default class DashBoard extends React.Component{
     render(){
@@ -14,7 +15,7 @@ export default class DashBoard extends React.Component{
         <Label >Saved Jobs</Label>
       </PivotItem>
       <PivotItem headerText="Add a Job">
-        <Label >Add a Job</Label>
+        <AddJob user={this.props.user}/>
       </PivotItem>
     </Pivot>
         </div>
