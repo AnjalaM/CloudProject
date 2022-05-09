@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import {  PrimaryButton } from '@fluentui/react/lib/Button';
 import { TextField, MaskedTextField } from '@fluentui/react/lib/TextField';
 import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
 import {
@@ -44,37 +44,38 @@ constructor(props){
  
  render(){
         return <div>
-            <form>
+            <form className='addjob-form'>
             <Stack horizontal tokens={this.stackTokens} styles={this.stackStyles} >
             <Stack {...this.columnProps}>
-            <TextField label="Company Name " required defaultValue={this.state.companyName} onChange={(e)=>{
+            <TextField label="Company Name " required value={this.state.companyName} onChange={(e)=>{
                 this.setState({
                     companyName:e.target.value
                 })
             }}/>
-            <TextField label="Description" multiline  rows={3} defaultValue={this.state.description} onChange={(e)=>{
-                this.setState({
-                    description:e.target.value
-                })
-            }}/>
-            <TextField label="Job Status " required defaultValue={this.state.status} onChange={(e)=>{
+         
+            <TextField label="Job Status " required value={this.state.status} onChange={(e)=>{
                 this.setState({
                     status:e.target.value
                 })
             }}/>
-            <TextField label="Job Links (Add multiple links separated by ;)" multiline  rows={3} defaultValue={this.state.links} onChange={(e)=>{
+               <TextField label="Description" multiline  rows={3} value={this.state.description} onChange={(e)=>{
+                this.setState({
+                    description:e.target.value
+                })
+            }}/>
+            <TextField label="Job Links (Add multiple links separated by ;)" multiline  rows={3} value={this.state.links} onChange={(e)=>{
                 this.setState({
                     links:e.target.value
                 })
             }}/>
             </Stack>
             <Stack {...this.columnProps}>
-            <TextField label="Role " required defaultValue={this.state.role} onChange={(e)=>{
+            <TextField label="Role " required value={this.state.role} onChange={(e)=>{
                 this.setState({
                     role:e.target.value
                 })
             }}/>
-            <TextField label="Location " required defaultValue={this.state.location} onChange={(e)=>{
+            <TextField label="Location " required value={this.state.location} onChange={(e)=>{
                 this.setState({
                     location:e.target.value
                 })
@@ -92,7 +93,7 @@ constructor(props){
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
       />
-      <TextField label="Notes" multiline  rows={3} defaultValue={this.state.notes} onChange={(e)=>{
+      <TextField label="Notes" multiline  rows={3} value={this.state.notes} onChange={(e)=>{
                 this.setState({
                     notes:e.target.value
                 })
@@ -101,7 +102,8 @@ constructor(props){
                 </Stack>
                 <PrimaryButton text="Applied this job" allowDisabledFocus
                  disabled={this.state.companyName==""||this.state.role==""||this.state.location==""||this.state.status==""?true:false} 
-                 onClick={()=>this.addJob()}/>
+                 onClick={()=>this.addJob()} className='add-button-addjob'/>
+               
             </form>
         </div>
     }
