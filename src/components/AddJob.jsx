@@ -107,8 +107,21 @@ constructor(props){
     }
 
    async addJob(){
+    this.setState({
+        companyName:"",
+        role:"",
+        location:"",
+        status:"",
+        links:"",
+        userEmail:this.props.user.attributes.email,
+        modifiedDate:new Date().toDateString(),
+        appliedDate:"",
+        notes:"",
+        description:"",
+        id:this.unique_id.toString()
+    })
         await fetch("https://xrz0f1xcc1.execute-api.us-west-1.amazonaws.com/Production/jobs",{
-            method:"PUT", mode: 'no-cors',
+            method:'PUT', 
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin':'*',
@@ -118,6 +131,8 @@ constructor(props){
             body:JSON.stringify(this.state)
         }).
         then((res)=>res.json())
-        .then((data)=>{ console.log(data)})
+        .then((data)=>{
+            
+        })
     }
 }
