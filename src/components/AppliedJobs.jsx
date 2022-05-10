@@ -132,15 +132,14 @@ export default class AppliedJobs extends React.Component{
     this._onItemInvoked=this._onItemInvoked.bind(this);
     this.updateJob=this.updateJob.bind(this);
     this.deleteJob=this.deleteJob.bind(this);
-    console.log(this.unique_id)
-    }
+     }
     async getJobs(){
       await fetch("https://xrz0f1xcc1.execute-api.us-west-1.amazonaws.com/Production/jobs/"+this.props.user.attributes.email).
       then((res)=>res.json())
       .then((data)=>{ this.setState({
         items:data!=undefined?data:[],
         isLoading:false
-      },()=>{console.log(this.state.isLoading)})})
+      },()=>{})})
       
     }
  
@@ -268,6 +267,9 @@ export default class AppliedJobs extends React.Component{
            </Stack>
              </div>
               :
+              this.state.items.length==0?
+              <h3>No Applied Jobs present</h3>
+              :
             <DetailsList
             items={this.state.items}
             columns={this.columns}
@@ -288,7 +290,7 @@ export default class AppliedJobs extends React.Component{
         isShowingJobDetails:true,
         job:item
       })
-      console.log(item)
+     
     }
    async updateJob(){
       this.setState({

@@ -14,7 +14,8 @@ export default class AddToDo extends React.Component{
         this.state={
             name:"",
             checked:"false",
-            id:this.unique_id
+            id:this.unique_id,
+            userEmail:this.props.user.attributes.email
         }
         this.addToDo=this.addToDo.bind(this);
     }
@@ -49,7 +50,8 @@ export default class AddToDo extends React.Component{
            this.setState({
             name:"",
             checked:"false",
-            id:uuid()
+            id:uuid(),
+            userEmail:this.props.user.attributes.email
            })
         }) 
     }

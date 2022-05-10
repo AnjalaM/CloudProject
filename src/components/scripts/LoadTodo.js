@@ -10,14 +10,15 @@ console.log("Writing entries to todo table.");
 var dynamodb = new AWS.DynamoDB.DocumentClient();
 var todoData = 
   JSON.parse(fs.readFileSync('../data/todo.json', 'utf8'));
-
+console.log(todoData)
   todoData.forEach(function(todo) {
   var params = {
     TableName: "ToDo",
     Item: {
         "name":todo.name,
         "id":todo.id,
-        "checked":todo.checked
+        "checked":todo.checked,
+        "userEmail":todo.userEmail
     }
   };
 

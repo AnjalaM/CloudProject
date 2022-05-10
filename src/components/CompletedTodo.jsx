@@ -39,12 +39,12 @@ export default class CompletedTodo extends React.Component{
 
     }
     async getToDo(){
-        await fetch("https://6hjw1m5p7l.execute-api.us-west-1.amazonaws.com/Production/todo/true").
+        await fetch("https://6hjw1m5p7l.execute-api.us-west-1.amazonaws.com/Production/todo/true/"+this.props.user.attributes.email).
         then((res)=>res.json())
         .then((data)=>{ this.setState({
             todoList:data!=undefined?data:[],
           isLoading:false
-        },()=>{console.log(this.state.todoList)})})
+        },()=>{})})
         
       }
 

@@ -19,11 +19,11 @@ export default class ToDo extends React.Component{
         return <div>
             <Pivot aria-label="Basic Pivot Example">
       <PivotItem headerText="Pending">
-          <PendingTodo/>
+          <PendingTodo user={this.props.user}/>
       </PivotItem>
       
       <PivotItem headerText="Completed">
-        <CompletedTodo/>
+        <CompletedTodo user={this.props.user}/>
       </PivotItem>
     </Pivot>
         </div>

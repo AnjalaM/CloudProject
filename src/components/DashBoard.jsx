@@ -23,11 +23,11 @@ export default class DashBoard extends React.Component{
     <div className='parallel-components todo-component'>
     <Pivot aria-label="Basic Pivot Example" >
       <PivotItem headerText="To-Do" className='todo-pivot'>
-        <ToDo/>
+        <ToDo user={this.props.user}/>
       </PivotItem>
       
       <PivotItem headerText="Add To-do" className='todo-pivot'>
-       <AddToDo/>
+       <AddToDo user={this.props.user}/>
       </PivotItem>
     </Pivot>
     </div>
